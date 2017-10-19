@@ -2,7 +2,12 @@ package ua.kvelinskyi.entitys;
 
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import javax.annotation.Generated;
 import javax.persistence.*;
+import javax.persistence.metamodel.StaticMetamodel;
+
+@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
+@StaticMetamodel(PhoneBookEntity.class)
 
 @Entity
 @Table(name = "phone_books", schema = "phonebase")
