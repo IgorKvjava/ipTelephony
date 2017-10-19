@@ -1,6 +1,7 @@
 package ua.kvelinskyi.commands;
 
-import ua.kvelinskyi.commands.checkIn.LoginCommand;
+import ua.kvelinskyi.commands.checkInupout.LoginCommand;
+import ua.kvelinskyi.commands.checkInupout.LogoutCommand;
 import ua.kvelinskyi.commands.interfaces.Command;
 import ua.kvelinskyi.commands.interfaces.IRequestWrapper;
 

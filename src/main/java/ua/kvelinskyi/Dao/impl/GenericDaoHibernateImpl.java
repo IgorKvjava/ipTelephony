@@ -3,11 +3,11 @@ package ua.kvelinskyi.Dao.impl;
 import ua.kvelinskyi.Dao.interfaces.GenericDao;
 import ua.kvelinskyi.HibernateSessionFactory;
 import ua.kvelinskyi.entitys.UsersEntity;
+import ua.kvelinskyi.entitys.UsersEntity_;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -52,8 +52,16 @@ public class GenericDaoHibernateImpl <T, PK extends Serializable>
     }
 
     @Override
-    public T read(PK id) {
-        return null;
+    public String read(T transientObject, PK anyPK) {
+        entityManager.getTransaction().begin();
+        CriteriaQuery<Object[]> criteriaQuery =criteriaBuilder.createQuery(anyClass);
+        Root<UsersEntity> root = criteriaQuery.from(anyClass);
+        Path<String> loginPath = root.get((UsersEntity_.login));
+        criteriaQuery.select(criteriaBuilder.array(loginPath));
+        criteriaQuery.where(criteriaBuilder.equal(root.get((UsersEntity_.login)), anyPK));
+        List<Object[]> loginUser = (entityManager.createQuery(criteriaQuery).getResultList());
+        entityManager.getTransaction().commit();
+        return String.valueOf(loginUser.get(0));
     }
 
     @Override

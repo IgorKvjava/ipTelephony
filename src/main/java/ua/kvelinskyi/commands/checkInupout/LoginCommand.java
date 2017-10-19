@@ -1,8 +1,7 @@
-package ua.kvelinskyi.commands.checkIn;
+package ua.kvelinskyi.commands.checkInupout;
 
-import ua.kvelinskyi.Dao.impl.GenericDaoHibernateImpl;
 import ua.kvelinskyi.HibernateSessionFactory;
-import ua.kvelinskyi.commands.CommandListUsers;
+import ua.kvelinskyi.commands.user.CommandsAssistant;
 import ua.kvelinskyi.commands.interfaces.Command;
 import ua.kvelinskyi.commands.interfaces.IRequestWrapper;
 import ua.kvelinskyi.entitys.UsersEntity;
@@ -12,7 +11,7 @@ import java.util.List;
 
 /**
  * 1.User authentication.
- * 2.User identification(librarian or user) and account entry.
+ * 2.User identification(admin or user) and account entry.
  *
  * @author I.K.
 */
@@ -28,17 +27,12 @@ public class LoginCommand implements Command {
         user.setLogin(login);
         user.setPassword(password);
         String path;
-//        HibernateSessionFactory.getInstance();
-//        HibernateSessionFactory.getInstance().createEntityManager();
         HibernateSessionFactory.getInstance().createEntityManager();
-        CommandListUsers commandListUsers = new CommandListUsers();
-        List<UsersEntity> list = commandListUsers.listAllUsers();
-        session.setAttribute("list", list);
-//        HibernateSessionFactory.getInstance().endEntityManager();
-//        GenericDaoHibernateImpl<UsersEntity,Integer> genericDaoHibernateUser = new GenericDaoHibernateImpl<>(UsersEntity.class);
-        if (true) {
-//            user = userDao.getUserData(user);
-
+        CommandsAssistant commandsAssistant = new CommandsAssistant();
+//        List<UsersEntity> listAllUsers = commandsAssistant.listAllUsers();
+        if (commandsAssistant.isExist(user)) {
+//            user = commandsAssistant.getUserData(user);
+            session.setAttribute("user", user);
             path = "/jsp/userPages/mainUserPage.jsp";
             return path;
 /*           CommandSessionHelper.setUserSessionAttributes(wrapper, user);

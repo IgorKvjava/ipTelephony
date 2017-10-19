@@ -1,4 +1,4 @@
-package ua.kvelinskyi.commands.checkIn;
+package ua.kvelinskyi.commands.checkInupout;
 
 
 import ua.kvelinskyi.commands.interfaces.Command;

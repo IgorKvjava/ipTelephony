@@ -1,4 +1,4 @@
-package ua.kvelinskyi.commands.checkIn;
+package ua.kvelinskyi.commands.checkInupout;
 
 
 import ua.kvelinskyi.commands.interfaces.Command;
@@ -20,8 +20,6 @@ public class CheckInCommand implements Command {
         HttpSession session = wrapper.getSession(true);
         String password = wrapper.getParameter("password");
         UsersEntity user = (UsersEntity) session.getAttribute("user");
-//        FactoryDAO factory = FactoryDAO.getInstance();
-//        UserDAO userDao = factory.getUsersDAO();
             user.setPassword(password);
             if (false) {
  //               user = userDao.getUserData(user);

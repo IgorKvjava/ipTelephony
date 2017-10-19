@@ -1,4 +1,4 @@
-package ua.kvelinskyi.commands;
+package ua.kvelinskyi.commands.checkInupout;
 
 import ua.kvelinskyi.commands.interfaces.Command;
 import ua.kvelinskyi.commands.interfaces.IRequestWrapper;
@@ -15,7 +15,8 @@ public class LogoutCommand implements Command {
     public String execute(IRequestWrapper wrapper){
         HttpSession session = wrapper.getSession(true);
         String path = "/jsp/index.jsp";
-        session.invalidate();
+        //TODO remove comment
+//        session.invalidate();
         return path;
     }
 }

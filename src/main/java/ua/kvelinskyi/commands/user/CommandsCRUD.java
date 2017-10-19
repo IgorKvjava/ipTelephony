@@ -1,10 +1,10 @@
-package ua.kvelinskyi.commands;
+package ua.kvelinskyi.commands.user;
 
 import ua.kvelinskyi.Dao.impl.GenericDaoHibernateImpl;
 import ua.kvelinskyi.entitys.PhoneBookEntity;
 import ua.kvelinskyi.entitys.UsersEntity;
 
-public class CommandCRUD {
+public class CommandsCRUD {
 
     public void DeleteUser (UsersEntity usersEntity){
         GenericDaoHibernateImpl<UsersEntity,Integer> genericDaoHibernate = new GenericDaoHibernateImpl<>(UsersEntity.class);
