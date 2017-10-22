@@ -11,9 +11,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 
 @Entity
 @Table(name = "phone_books", schema = "phonebase")
-@Cacheable
+/*@Cacheable
 // do cache on user table
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)*/
 public class PhoneBookEntity {
     private int id;
     private int idUser;

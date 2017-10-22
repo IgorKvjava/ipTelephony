@@ -1,5 +1,7 @@
 package ua.kvelinskyi.commands.checkInupout;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ua.kvelinskyi.HibernateSessionFactory;
 import ua.kvelinskyi.commands.user.CommandsAssistant;
 import ua.kvelinskyi.commands.interfaces.Command;
@@ -18,6 +20,7 @@ import java.util.List;
 
 public class LoginCommand implements Command {
 
+
     @Override
     public String execute(IRequestWrapper wrapper) {
         HttpSession session = wrapper.getSession(true);
@@ -31,7 +34,8 @@ public class LoginCommand implements Command {
         CommandsAssistant commandsAssistant = new CommandsAssistant();
 //        List<UsersEntity> listAllUsers = commandsAssistant.listAllUsers();
         if (commandsAssistant.isExist(user)) {
-//            user = commandsAssistant.getUserData(user);
+
+            user = commandsAssistant.getUserData(user);
             session.setAttribute("user", user);
             path = "/jsp/userPages/mainUserPage.jsp";
             return path;

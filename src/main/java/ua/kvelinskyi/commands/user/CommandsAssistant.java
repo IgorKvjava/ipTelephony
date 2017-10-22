@@ -21,9 +21,12 @@ public class CommandsAssistant {
     public boolean isExist(UsersEntity user) {
         GenericDaoHibernateImpl<UsersEntity, String> genericDaoHibernate =
                 new GenericDaoHibernateImpl<>(UsersEntity.class);
-        if(genericDaoHibernate.read(user, user.getLogin()) != null){
-            return true;
-        }
-        return false;
+            return genericDaoHibernate.isExistUserLogin(user, user.getLogin());
+    }
+
+    public UsersEntity getUserData(UsersEntity user) {
+        GenericDaoHibernateImpl<UsersEntity, String> genericDaoHibernate =
+                new GenericDaoHibernateImpl<>(UsersEntity.class);
+        return genericDaoHibernate.readUserData(user);
     }
 }

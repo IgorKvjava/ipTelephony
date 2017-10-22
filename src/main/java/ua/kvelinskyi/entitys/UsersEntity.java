@@ -14,9 +14,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "users", schema = "phonebase")
-@Cacheable
+/*@Cacheable
 // do cache on user table
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)*/
 public class UsersEntity {
     private int id;
     private String login;

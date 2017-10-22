@@ -21,19 +21,19 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
 
-            <property name="hibernate.cache.default_cache_concurrency_strategy" value="read-write" />
-            <!--use ehcache provider-->
+           <!-- <property name="hibernate.cache.default_cache_concurrency_strategy" value="read-write" />
+            &lt;!&ndash;use ehcache provider&ndash;&gt;
             <property name="hibernate.cache.region.factory_class"
                       value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory"/>
             <property name="hibernate.javax.cache.provider"
                       value="org.ehcache.jsr107.EhcacheCachingProvider"/>
 
-            <!--use second level cache-->
+            &lt;!&ndash;use second level cache&ndash;&gt;
             <property name="hibernate.cache.use_second_level_cache"
                       value="true"/>
-            <!--use 3rd level cache-->
+            &lt;!&ndash;use 3rd level cache&ndash;&gt;
             <property name="hibernate.cache.use_query_cache"
-                      value="true"/>
+                      value="true"/>-->
 
 
         </properties>

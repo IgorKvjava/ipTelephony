@@ -16,7 +16,9 @@ public interface GenericDao <T, PK extends Serializable> {
      * Извлечь объект, предварительно сохраненный в базе данных, используя
      *   указанный id в качестве первичного ключа
      */
-    public String read(T transientObject,PK anyPK);
+    public boolean isExistUserLogin(T transientObject, PK anyPK);
+
+    public UsersEntity readUserData(UsersEntity usersEntity);
 
     /** Сохранить изменения, сделанные в объекте.  */
     public void update(T transientObject);

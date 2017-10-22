@@ -6,21 +6,27 @@
 <body>
 <div class="block">
     <p>
-    <form action="/indexPage" method="GET">
-        <input type="hidden" name="param" value="" >
+    <form action="indexPage" method="GET">
+        <input type="hidden" name="param" value="">
         <input type="submit" name="ok" value="Exit"/>
     </form>
     </p>
     Welcome:
     <br>
     <table border="1" align="center">
-        <caption>Users</caption>
+        <caption>User</caption>
         <tr>
+            <th>Id</th>
             <th>login</th>
             <th>pass</th>
+            <th>user name</th>
+            <th>role</th>
         <tr>
-            <th>${login}</th>
-            <th>${password}</th>
+            <th>${user.id}</th>
+            <th>${user.login}</th>
+            <th>${user.password}</th>
+            <th>${user.userName}</th>
+            <th>${user.role}</th>
         </tr>
 
 

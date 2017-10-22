@@ -1,5 +1,7 @@
 package ua.kvelinskyi.Dao.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ua.kvelinskyi.Dao.interfaces.GenericDao;
 import ua.kvelinskyi.HibernateSessionFactory;
 import ua.kvelinskyi.entitys.UsersEntity;
@@ -14,6 +16,7 @@ import java.util.List;
 
 public class GenericDaoHibernateImpl <T, PK extends Serializable>
         implements GenericDao<T, PK> {
+    final Logger logger = LoggerFactory.getLogger(GenericDaoHibernateImpl.class);
         private EntityManager entityManager ;
         private CriteriaBuilder criteriaBuilder;
         private Class anyClass;
@@ -23,7 +26,7 @@ public class GenericDaoHibernateImpl <T, PK extends Serializable>
         this.entityManager = HibernateSessionFactory.getInstance().getEntityManager();
         this.criteriaBuilder = HibernateSessionFactory.getInstance().getEntityManager().getCriteriaBuilder();
     }
-
+//TODO ERROR  public boolean isExist
     @Override
     public boolean isExist(UsersEntity usersEntity) {
         entityManager.getTransaction().begin();
@@ -36,6 +39,14 @@ public class GenericDaoHibernateImpl <T, PK extends Serializable>
         List<T> resultList = typedQuery.getResultList();
         entityManager.getTransaction().commit();
         return resultList.isEmpty();
+    }
+
+    @Override
+    public UsersEntity readUserData(UsersEntity usersEntity) {
+        entityManager.getTransaction().begin();
+        usersEntity = entityManager.find(UsersEntity.class, 2 );
+        entityManager.getTransaction().commit();
+        return usersEntity;
     }
 
     @Override
@@ -52,7 +63,7 @@ public class GenericDaoHibernateImpl <T, PK extends Serializable>
     }
 
     @Override
-    public String read(T transientObject, PK anyPK) {
+    public boolean isExistUserLogin(T transientObject, PK anyPK) {
         entityManager.getTransaction().begin();
         CriteriaQuery<Object[]> criteriaQuery =criteriaBuilder.createQuery(anyClass);
         Root<UsersEntity> root = criteriaQuery.from(anyClass);
@@ -61,7 +72,10 @@ public class GenericDaoHibernateImpl <T, PK extends Serializable>
         criteriaQuery.where(criteriaBuilder.equal(root.get((UsersEntity_.login)), anyPK));
         List<Object[]> loginUser = (entityManager.createQuery(criteriaQuery).getResultList());
         entityManager.getTransaction().commit();
-        return String.valueOf(loginUser.get(0));
+        if (loginUser.isEmpty()){
+        return false;
+        }
+        return true;
     }
 
     @Override
