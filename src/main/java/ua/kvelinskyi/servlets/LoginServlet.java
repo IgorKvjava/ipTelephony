@@ -1,7 +1,6 @@
 package ua.kvelinskyi.servlets;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginServlet  {
-    final Logger logger = LoggerFactory.getLogger(LoginServlet.class);
+    final Logger logger = Logger.getLogger(LoginServlet.class);
 
     @RequestMapping(value = "mainUserPage", method = RequestMethod.POST)
     public String manageMainPage(@RequestParam("login") String login,

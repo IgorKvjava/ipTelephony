@@ -1,7 +1,6 @@
 package ua.kvelinskyi.Dao.impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import ua.kvelinskyi.Dao.interfaces.GenericDao;
 import ua.kvelinskyi.HibernateSessionFactory;
 import ua.kvelinskyi.entitys.UsersEntity;
@@ -16,7 +15,7 @@ import java.util.List;
 
 public class GenericDaoHibernateImpl <T, PK extends Serializable>
         implements GenericDao<T, PK> {
-    final Logger logger = LoggerFactory.getLogger(GenericDaoHibernateImpl.class);
+    final Logger logger = Logger.getLogger(GenericDaoHibernateImpl.class);
         private EntityManager entityManager ;
         private CriteriaBuilder criteriaBuilder;
         private Class anyClass;
@@ -62,6 +61,7 @@ public class GenericDaoHibernateImpl <T, PK extends Serializable>
         return null;
     }
 
+    //TODO work
     @Override
     public boolean isExistUserLogin(T transientObject, PK anyPK) {
         entityManager.getTransaction().begin();
