@@ -33,7 +33,8 @@
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="fileset" name="LoginServlet Servlet" removed="false">
-          <file>file://$MODULE_DIR$/web/WEB-INF/LoginServlet-servlet.xml</file>
+          <dependency>web LoginServlet servlet context</dependency>
+          <file>file://$MODULE_DIR$/webapp/WEB-INF/LoginServlet-servlet.xml</file>
         </fileset>
       </configuration>
     </facet>

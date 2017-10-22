@@ -1,6 +1,7 @@
 package ua.kvelinskyi.Dao.impl;
 
 import org.apache.log4j.Logger;
+import org.hibernate.sql.Select;
 import ua.kvelinskyi.Dao.interfaces.GenericDao;
 import ua.kvelinskyi.HibernateSessionFactory;
 import ua.kvelinskyi.entitys.UsersEntity;
@@ -40,10 +41,22 @@ public class GenericDaoHibernateImpl <T, PK extends Serializable>
         return resultList.isEmpty();
     }
 
+    // TODO Native Query
+    private Integer idUserByLogin (String login){
+        String sql = "SELECT id FROM users WHERE login='"+login+"'";
+        entityManager.getTransaction().begin();
+        List<Object> objectList = entityManager
+                .createNativeQuery(sql )
+                .getResultList();
+        entityManager.getTransaction().commit();
+        int id = (int) objectList.get(0);
+        return id;
+    }
     @Override
     public UsersEntity readUserData(UsersEntity usersEntity) {
+        int idUser = idUserByLogin(usersEntity.getLogin());
         entityManager.getTransaction().begin();
-        usersEntity = entityManager.find(UsersEntity.class, 2 );
+        usersEntity = entityManager.find(UsersEntity.class, idUser );
         entityManager.getTransaction().commit();
         return usersEntity;
     }
