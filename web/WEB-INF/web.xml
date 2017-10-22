@@ -5,17 +5,47 @@
          version="3.1">
 
   <welcome-file-list>
-    <welcome-file>/jsp/index.jsp</welcome-file>
+    <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
   </welcome-file-list>
 
+  <context-param>
+    <!--these parameters are needed by listener-->
+    <param-name>contextConfigLocation</param-name>
+    <!--Upon initialization of a DispatcherServlet, Spring MVC looks for a
+    file named [servlet-name]-servlet.xml in the WEB-INF directory of your web application
+    and creates the beans defined there...-->
+    <param-value>/WEB-INF/LoginServlet-servlet.xml</param-value>
+  </context-param>
+
+  <listener>
+    <!--it reads parameters and sends them to dispatcher servlet-->
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
   <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <!--not our servlet, but spring's dispatcher servlet-->
+    <!--it reads xml file, then looks for files with annotations -->
+    <!--then it creates corresponding beans and runs its methods, as it written in controller bean-->
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/mainUserPage</url-pattern>
+    <url-pattern>/registrationPage</url-pattern>
+    <url-pattern>/passwordPage</url-pattern>
+    <url-pattern>/userEditPage</url-pattern>
+    <url-pattern>/indexPage</url-pattern>
+  </servlet-mapping>
+
+  <!--<servlet>
     <servlet-name>Controller</servlet-name>
     <servlet-class>ua.kvelinskyi.controllers.Controller</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Controller</servlet-name>
     <url-pattern>/</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping>-->
 
   <!--<filter>
     <filter-name>setCharFilter</filter-name>
@@ -34,14 +64,14 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>-->
 
-  <error-page>
+  <!--<error-page>
     <error-code>500</error-code>
-    <location>//jsp/errorPage.jsp</location>
+    <location>/WEB-INF/jsp/errorPage.jsp</location>
   </error-page>
   <error-page>
     <error-code>404</error-code>
-    <location>//jsp/errorPage.jsp</location>
-  </error-page>
+    <location>/WEB-INF/jsp/errorPage.jsp</location>
+  </error-page>-->
   <session-config>
     <session-timeout>
       3000

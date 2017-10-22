@@ -1,4 +1,4 @@
-<%@include file="/jsp/header.jsp" %>
+<%@include file="/WEB-INF/jsp/header.jsp" %>
 <html>
 <head>
     <title>Welcome: </title>
@@ -6,9 +6,9 @@
 <body>
 <div class="block">
     <p>
-    <form action="${pageContext.request.contextPath}/command" method="get" class="exitBlock">
-        <input type="hidden" name="do" value="exit"/>
-        <input type="submit" value="Exit"/>
+    <form action="/indexPage" method="GET">
+        <input type="hidden" name="param" value="" >
+        <input type="submit" name="ok" value="Exit"/>
     </form>
     </p>
     Welcome:
@@ -19,8 +19,8 @@
             <th>login</th>
             <th>pass</th>
         <tr>
-        <th>${user.login}</th>
-        <th>${user.password}</th>
+            <th>${login}</th>
+            <th>${password}</th>
         </tr>
 
 
@@ -32,6 +32,7 @@
          </c:forEach>--%>
 
     </table>
+
     <p>
         <%--<form action="<c:url value="/jsp/userPages/userEditDataPage.jsp"/>">
             <input type="submit" value="PersonalProfile"/>

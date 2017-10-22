@@ -1,33 +1,27 @@
-<%@include file="/jsp/header.jsp" %>
+<%@include file="/WEB-INF/jsp/header.jsp" %>
 <html>
 <head>
-    <title><fmt:message key="LOGIN" bundle="${lang}"/>Enter password</title>
+    <title>LOGIN ${lang} Enter password</title>
 </head>
 <body>
 <div class="block">
-    <form action="${pageContext.request.contextPath}/command" method="post">
+    <form action="userEditPage" method="POST">
         <p>
-            <label><fmt:message key="Your" bundle="${lang}"/> <fmt:message key="LOGIN" bundle="${lang}"/>: ${login}<br></label>
+            <label>Your LOGIN: ${login}<br></label>
         </p>
-        <label><fmt:message key="Your" bundle="${lang}"/> <fmt:message key="Password" bundle="${lang}"/>:<br></label>
+        <label>Your ${lang} Password:<br></label>
         <input type="text" name="password" value="" size="15" maxlength="15"/>
+            <input type="submit" value="Sign Up"/>
         </p>
-        <input type="hidden" name="login" value="${login}">
+    </form>
 
-        <p>
-            <input type="hidden" name="do" value="SingPass"/>
-            <input type="submit" value="<fmt:message key="SignUp" bundle="${lang}"/>"/>
-        </p>
+    <form action="indexPage" method="GET">
+        <input type="hidden" name="param" value="" >
+        <input type="submit" name="ok" value="Exit"/>
     </form>
-    <form action="${pageContext.request.contextPath}/command" method="get">
-        <p>
-            <input type="hidden" name="do" value="exit"/>
-            <input type="submit" value="<fmt:message key="Exit" bundle="${lang}"/>"/>
-        </p>
-    </form>
-    <c:if test="${checkInUserMessage != null}">
+    <%--<c:if test="${checkInUserMessage != null}">
         <h1><fmt:message key="${checkInUserMessage}" bundle="${lang}"/></h1>
-    </c:if>
+    </c:if>--%>
 </div>
 </body>
 </html>

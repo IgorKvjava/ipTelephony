@@ -1,5 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>ua.com.kvelinskyi.web</groupId>
   <artifactId>ipPhone</artifactId>
@@ -7,7 +9,7 @@
   <version>1.0-SNAPSHOT</version>
 
 
-  <name>ipPhone Maven Webapp</name>
+  <name>ipPhone Maven Web</name>
   <url>http://maven.apache.org</url>
 
 
@@ -62,14 +64,14 @@
       <version>${hibernate-version}</version>
     </dependency>
 
-    <!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->
+    <!-- for JPA, use hibernate-entityManager instead of hibernate-core -->
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
       <version>${hibernate-version}</version>
     </dependency>
 
-    <!-- optional -->
+    <!-- optional hibernate-->
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-osgi</artifactId>
@@ -157,6 +159,7 @@
       <scope>test</scope>
     </dependency>
 
+        <!--Spring-->
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-context</artifactId>
@@ -179,6 +182,31 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
       <version>${spring-framework-version}</version>
+    </dependency>
+ <!--end Spring-->
+
+    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.25</version>
+    </dependency>
+    <dependency>
+      <groupId> org.apache.cassandra</groupId>
+      <artifactId>cassandra-all</artifactId>
+      <version>0.8.1</version>
+
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+        </exclusion>
+      </exclusions>
+
     </dependency>
 
   </dependencies>

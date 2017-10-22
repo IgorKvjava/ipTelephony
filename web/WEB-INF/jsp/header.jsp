@@ -4,7 +4,7 @@
 <html>
 <head>
     <style>
-        <%@include file='/jsp/css/style.css' %>
+        <%@include file='/WEB-INF/jsp/css/style.css' %>
     </style>
 </head>
 <body >
